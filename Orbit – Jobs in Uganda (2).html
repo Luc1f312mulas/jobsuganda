@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Orbit – Jobs in Uganda</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f4ee;--sf:#fff;--tx:#14213d;--mu:#5d6679;--ln:#e2dfd4;--pr:#1d3fbb;--pt:#fff;--ac:#f4a300;--ok:#16794c;--bd:#fff4d6;--bt:#6a4a00;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.5 'DM Sans',system-ui,sans-serif}
+h1,h2,h3,.logo{font-family:Sora,'DM Sans',sans-serif;margin:0}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid var(--ac);outline-offset:2px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--ln)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:10}
+.bar{max-width:1100px;margin:auto;padding:10px 16px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.logo{font-size:24px;font-weight:800;display:flex;align-items:center;gap:8px;color:var(--tx)}
+.orb{width:26px;height:26px;border:3px solid var(--pr);border-radius:50%;position:relative}
+.orb::after{content:"";position:absolute;width:9px;height:9px;background:var(--ac);border-radius:50%;top:-6px;right:0}
+nav{display:flex;gap:2px;overflow-x:auto;flex:1;min-width:0}
+nav button{background:none;border:0;padding:8px 10px;border-radius:8px;color:var(--mu);white-space:nowrap;font-weight:500}
+nav button[aria-current=true]{color:var(--tx);background:var(--sf);box-shadow:inset 0 -3px var(--ac)}
+.btn{border:1px solid var(--ln);background:var(--sf);padding:8px 14px;border-radius:999px;font-weight:700}
+.btn.p{background:var(--pr);color:var(--pt);border-color:var(--pr)}
+main{max-width:1100px;margin:auto;padding:16px}
+.hero{padding:28px 0 12px}
+.hero h1{font-size:clamp(28px,5vw,46px);line-height:1.1;max-width:16ch;font-weight:800}
+.hero p{color:var(--mu);max-width:56ch}
+.search{display:grid;grid-template-columns:2fr 1.2fr 1.2fr auto;gap:8px;margin:16px 0 8px}
+input,select,textarea{background:var(--sf);border:1px solid var(--ln);border-radius:10px;padding:10px 12px;width:100%}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}.filters select{width:auto}
+.tabs{display:flex;gap:8px;margin:14px 0}
+.tab{flex:1;text-align:left;padding:12px 14px;border:2px solid var(--ln);background:var(--sf);border-radius:14px}
+.tab[aria-pressed=true]{border-color:var(--pr)}
+.tab b{display:block;font-family:Sora}.tab small{color:var(--mu)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+.card{background:var(--sf);border:1px solid var(--ln);border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:6px}
+.card h3{font-size:17px}.co{color:var(--mu);font-size:14px}
+.sal{font-family:Sora;font-weight:700;color:var(--pr)}
+.tags{display:flex;gap:6px;flex-wrap:wrap}
+.tag{font-size:12px;padding:2px 9px;border-radius:999px;border:1px solid var(--ln);color:var(--mu)}
+.tag.cert{background:var(--bd);color:var(--bt);border-color:transparent}.tag.nc{background:#e3f4ea;color:#14573a;border-color:transparent}
+.fee{font-size:13px;color:var(--mu)}
+.row{display:flex;gap:8px;margin-top:auto;padding-top:6px}.row .btn{flex:1}
+.sec{background:var(--sf);border:1px solid var(--ln);border-radius:14px;padding:16px;margin-bottom:12px}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.bars div{display:grid;grid-template-columns:130px 1fr 90px;gap:8px;align-items:center;font-size:14px;margin:6px 0}
+.bars i{display:block;height:10px;border-radius:6px;background:linear-gradient(90deg,var(--pr),var(--ac))}
+dialog{border:0;border-radius:16px;padding:20px;max-width:440px;width:calc(100% - 24px);background:var(--sf);color:var(--tx)}
+dialog::backdrop{background:rgba(10,15,30,.6)}
+label{display:block;font-size:14px;font-weight:700;margin:10px 0 4px}
+.warn{background:var(--bd);color:var(--bt);padding:8px 10px;border-radius:10px;font-size:13px;margin:8px 0}
+.toast{position:fixed;bottom:calc(16px + env(safe-area-inset-bottom,0px));left:50%;transform:translateX(-50%);background:var(--tx);color:var(--bg);padding:10px 16px;border-radius:999px;z-index:20}
+.cookie{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));max-width:560px;background:var(--sf);border:1px solid var(--ln);padding:12px;border-radius:14px;z-index:15;display:flex;gap:10px;align-items:center;font-size:14px}
+footer{max-width:1100px;margin:30px auto;padding:0 16px;color:var(--mu);font-size:13px}
+.chat{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:9}
+@media(max-width:720px){.search{grid-template-columns:1fr}.bars div{grid-template-columns:100px 1fr 80px}}
+.stat{background:var(--sf);border:1px solid var(--ln);border-radius:12px;padding:10px 14px;min-width:120px}.stat b{font:800 22px Sora}.stats{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+.pm{display:grid;grid-template-columns:1fr 1fr;gap:8px}.pm label{border:2px solid var(--ln);border-radius:12px;padding:10px;margin:0;display:block;cursor:pointer}.pm input{width:auto;margin-right:6px}.pm label:has(input:checked){border-color:var(--pr)}
+.btn:disabled{opacity:.45;cursor:not-allowed}.tw{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:14px}td,th{padding:6px 8px;border-bottom:1px solid var(--ln);text-align:left;white-space:nowrap}
+.back{background:none;border:0;color:var(--pr);font-weight:700;padding:0;margin:8px 0}.hint{font-size:13px;color:var(--mu)}
+.bar{position:relative}.menu{position:absolute;right:16px;top:100%;background:var(--sf);border:1px solid var(--ln);border-radius:14px;padding:6px;min-width:210px;box-shadow:0 10px 30px rgba(0,0,0,.18);display:flex;flex-direction:column;z-index:12}.menu[hidden]{display:none}.menu button{background:none;border:0;text-align:left;padding:12px 14px;border-radius:10px;font-weight:500}.menu button:hover,.menu button[aria-current=true]{background:var(--bg)}</style></head><body>
+<header><div class="bar">
+<a class="logo" href="#"><span class="orb"></span>Orbit</a><span style="flex:1"></span><button class="btn p" id="signup">Sign up</button><button class="btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">☰ Menu</button>
+<div id="nav" class="menu" hidden></div>
+</div></header>
+<main id="main"></main>
+<footer>Orbit is a demo job board for Uganda. Salary figures are indicative ranges, not guarantees. Never pay a fee to anyone you haven’t verified. <a href="#" id="rep">Report a scam</a> · Privacy · Terms · Accessibility</footer>
+<button class="btn p chat" id="bot">Help</button>
+<dialog id="dlg"></dialog><div id="toast" class="toast" hidden></div>
+<script>
+const $=s=>document.querySelector(s);
+const LOC=["Kampala","Wakiso","Entebbe","Jinja","Mbarara","Gulu","Mbale","Masaka","Fort Portal","Arua"];
+const E=["Household","Security","Retail","Transport","Construction","Recycling","Hospitality","Agriculture","Manufacturing","Oil & Gas","Education","Healthcare","Trades","Finance","Engineering","Technology","Legal","Management"];
+// t,cat,min,max,per,type,edu,fee ; cert=false rows first
+const N=[["Housemaid / House Help","Household",120e3,200e3,"month","Full-time","None",0],["Security Guard","Security",65e3,120e3,"month","Full-time","None",0],["Shop Attendant","Retail",5e3,12e3,"day","Part-time","None",0],["Supermarket Attendant","Retail",6e3,14e3,"day","Full-time","None",2e3],["Market Loader / Porter","Retail",10e3,30e3,"day","Casual","None",0],["Boda Boda Rider","Transport",20e3,50e3,"day","Casual","None",5e3],["Casual Laborer (Construction)","Construction",15e3,40e3,"day","Casual","None",0],["Scrap Metal Collector","Recycling",10e3,30e3,"day","Casual","None",0],["Car Wash Attendant","Transport",8e3,20e3,"day","Casual","None",0],["Gardener / Groundskeeper","Household",100e3,200e3,"month","Full-time","None",0],["Waiter / Waitress","Hospitality",80e3,200e3,"month","Full-time","None",0],["Cook / Chef (Small Eatery)","Hospitality",80e3,250e3,"month","Full-time","None",0],["Cleaner (Office/Commercial)","Household",150e3,300e3,"month","Full-time","None",3e3],["Delivery Rider (Food/Goods)","Transport",20e3,45e3,"day","Contract","None",5e3],["Farm Hand / Agricultural Laborer","Agriculture",8e3,20e3,"day","Seasonal","None",0],["Metal Fabricator Assistant","Manufacturing",12e3,25e3,"day","Casual","None",0],["Pipe Bending Technician (Oil & Gas)","Oil & Gas",1.5e6,4e6,"month","Contract","On-the-job skill",10e3]];
+const C=[["Primary School Teacher","Education",400e3,900e3,"month","Full-time","Diploma",5e3],["Nurse","Healthcare",800e3,1.8e6,"month","Full-time","Diploma/Degree",5e3],["Electrician","Trades",600e3,1.5e6,"month","Full-time","Technical certificate",0],["Plumber","Trades",500e3,1.2e6,"month","Full-time","Technical certificate",0],["Mechanic","Trades",500e3,1.3e6,"month","Full-time","Apprenticeship certificate",0],["Truck Driver","Transport",900e3,2e6,"month","Full-time","Commercial licence",5e3],["Accountant","Finance",1.2e6,3.5e6,"month","Full-time","Degree + CPA/ACCA",10e3],["Civil Engineer","Engineering",2e6,5e6,"month","Full-time","Degree + registration",10e3],["Software Engineer / Developer","Technology",2.5e6,8e6,"month","Remote","Degree or portfolio",0],["Data Analyst","Technology",1.8e6,4.5e6,"month","Hybrid","Degree/Certificate",0],["Human Resource Manager","Management",2e6,5e6,"month","Full-time","Degree",10e3],["Marketing Manager","Management",2e6,5e6,"month","Full-time","Degree",10e3],["Lawyer / Advocate","Legal",2e6,7e6,"month","Full-time","Law degree + Bar",10e3],["Pharmacist","Healthcare",1.5e6,3.5e6,"month","Full-time","Degree + licence",10e3],["Architect","Engineering",2e6,5e6,"month","Full-time","Degree + registration",10e3],["School Principal","Education",2.5e6,5e6,"month","Full-time","Degree + teaching qual.",10e3],["Supply Chain Manager","Management",2.5e6,6e6,"month","Full-time","Degree",10e3],["International School Teacher","Education",6.5e6,7.4e6,"month","Full-time","Degree + PGCE",10e3]];
+const CO=["Nakasero Homes","SafeGate Ltd","Mukwano Mart","Kisenyi Traders","Pearl Build","GreenLeaf Farms","Lakeside Eatery","Kira Clinic","Source Hub","Bridgeway Group"];
+
+const CFG={no:20000,cert:50000,merchant:"000000"};
+const SEED=[];[[N,false],[C,true]].forEach(([a,c])=>a.forEach((r,i)=>{const n=SEED.length;SEED.push({id:"s"+n,t:r[0],cat:r[1],min:r[2],max:r[3],per:r[4],type:r[5],edu:r[6],cert:c,loc:LOC[(n*3+i)%10],co:CO[(n*7)%10],ver:n%3!==1,age:(n*5)%27+1,open:(n%6)*3+2})}));
+let DB={jobs:{},apps:{},cfg:{}},J=[],db=null,uid="local",isAdmin=false;
+function merge(){J=[];SEED.forEach(x=>{const o=DB.jobs[x.id];if(o&&o.deleted)return;J.push(Object.assign({},x,o||{}))});Object.entries(DB.jobs).forEach(([k,o])=>{if(k[0]==="n"&&!o.deleted)J.push(Object.assign({id:k,ver:false,age:Math.floor((Date.now()-(o.ts||Date.now()))/864e5)},o))});
+const c=Object.assign({},CFG,DB.cfg);J.forEach(j=>{j.fee=j.feeOverride!=null&&j.feeOverride!==""?+j.feeOverride:(j.cert?+c.cert:+c.no)})}
+let st={view:"jobs",jid:null,tab:"all",q:"",loc:"",cat:"",type:"",min:0,sort:"new",saved:[],apps:[],alerts:[],user:null,rate:1,cur:"UGX"};
+try{Object.assign(st,JSON.parse(localStorage.getItem("orbit")||"{}"))}catch(e){}
+st.view="jobs";
+const save=()=>{try{localStorage.setItem("orbit",JSON.stringify({saved:st.saved,apps:st.apps,alerts:st.alerts,user:st.user}))}catch(e){}};
+async function put(col,id,data,merge){try{if(db){const r=db.doc(col+"/"+id);merge?await r.update(data):await r.set(data)}else{DB[col]=DB[col]||{};DB[col][id]=Object.assign(merge?(DB[col][id]||{}):{},data)}}catch(e){toast("Could not save: "+(e.message||"no permission"));return false}merge_();return true}
+function merge_(){merge();render()}
+(async()=>{try{const u=await claude.use("user");if(u){uid=(await u.id())||"local";isAdmin=!!(await u.canEdit())}db=await claude.use("db");if(db){["jobs","applications","settings"].forEach(c=>db.collection(c).onSnapshot(q=>{const k=c==="applications"?"apps":c==="settings"?"cfg":"jobs";const o={};q.docs.forEach(d=>o[d.id]=d.data());if(k==="cfg")DB.cfg=o.main||{};else DB[k]=o;merge_()},()=>{}))}}catch(e){}render()})();
+const f=n=>"UGX "+(n>=1e6?+(n/1e6).toFixed(1)+"M":n>=1e3?+(n/1e3).toFixed(1)+"k":Math.round(n));
+const U=n=>"UGX "+Number(n).toLocaleString();
+const sal=j=>f(j.min)+"–"+f(j.max)+" /"+j.per;
+const mo=j=>j.per==="day"?j.min*26:j.min,mx=j=>j.max*(j.per==="day"?26:1);
+const toast=m=>{const t=$("#toast");t.textContent=m;t.hidden=false;setTimeout(()=>t.hidden=true,2800)};
+const views={jobs:"Find jobs",apps:"My applications",saved:"Saved",employers:"For employers",salary:"Salaries",learn:"Career help"};
+const myApps=()=>db?Object.entries(DB.apps).filter(([k,a])=>a.uid===uid).map(([k,a])=>a):st.apps;
+const applied=id=>myApps().some(a=>a.job===id);
+function nav(){const v=isAdmin?Object.assign({},views,{admin:"Admin"}):views;delete v.jobs;$("#nav").innerHTML=Object.entries(v).map(([k,x])=>`<button data-v="${k}" ${st.view===k?'aria-current="true"':''}>${x}${k==="saved"&&st.saved.length?" ("+st.saved.length+")":""}</button>`).join("")}
+function list(){let r=J.filter(j=>(st.tab==="all"||(st.tab==="cert")===j.cert)&&(!st.loc||j.loc===st.loc)&&(!st.cat||j.cat===st.cat)&&(!st.type||j.type===st.type)&&mo(j)>=st.min&&(j.t+j.co+j.cat+j.edu).toLowerCase().includes(st.q.toLowerCase()));
+if(st.sort==="new")r.sort((a,b)=>a.age-b.age);else r.sort((a,b)=>mx(b)-mx(a));return r}
+function card(j){const s=st.saved.includes(j.id);return `<article class="card"><div class="tags"><span class="tag ${j.cert?'cert':'nc'}">${j.cert?"Certificate required":"No certificate"}</span>${j.ver?'<span class="tag">✓ Verified employer</span>':''}</div>
+<h3>${j.t}</h3><div class="co">${j.co} · ${j.loc}</div><div class="sal">${sal(j)}</div>
+<div class="tags"><span class="tag"><b>${j.open}</b> ${j.open<1?"openings (closed)":"openings left"}</span><span class="tag">${j.type}</span><span class="tag">${j.cat}</span><span class="tag">${j.age}d ago</span></div>
+<div class="fee">Application fee: ${U(j.fee)}</div>
+<div class="row"><button class="btn" data-save="${j.id}" aria-pressed="${s}">${s?"Saved":"Save"}</button><button class="btn p" data-job="${j.id}">${applied(j.id)?"View (applied)":"View & apply"}</button></div></article>`}
+function jobs(){const cnt={all:J.length,no:J.filter(j=>!j.cert).length,cert:J.filter(j=>j.cert).length},op=a=>a.reduce((t,j)=>t+(+j.open||0),0);
+return `<section class="hero"><h1>Find work that fits you, wherever you are in Uganda.</h1><p>Jobs that need no certificate are listed apart from jobs that do. Open any job to read the description, then apply.</p><div class="stats"><div class="stat"><b>${J.length}</b><br>live jobs</div><div class="stat"><b>${op(J)}</b><br>open positions</div><div class="stat"><b>${U(CFG.no)}</b><br>fee, no-certificate jobs</div><div class="stat"><b>${U(CFG.cert)}</b><br>fee, certified jobs</div></div></section>
+<form class="search" id="sf" role="search"><input id="q" placeholder="Job title, company or skill (try: driver)" value="${st.q}" aria-label="Keyword"><select id="loc" aria-label="Location"><option value="">All locations</option>${LOC.map(l=>`<option ${st.loc===l?"selected":""}>${l}</option>`).join("")}</select><select id="cat" aria-label="Industry"><option value="">All industries</option>${E.map(l=>`<option ${st.cat===l?"selected":""}>${l}</option>`).join("")}</select><button class="btn p">Search</button></form>
+<div class="filters"><select id="type" aria-label="Job type"><option value="">Any job type</option>${["Full-time","Part-time","Casual","Contract","Seasonal","Remote","Hybrid"].map(l=>`<option ${st.type===l?"selected":""}>${l}</option>`).join("")}</select>
+<select id="min" aria-label="Minimum monthly pay">${[[0,"Any pay"],[100e3,"UGX 100k+ /month"],[500e3,"UGX 500k+ /month"],[1e6,"UGX 1M+ /month"],[3e6,"UGX 3M+ /month"]].map(([v,l])=>`<option value="${v}" ${st.min==v?"selected":""}>${l}</option>`).join("")}</select>
+<select id="sort" aria-label="Sort"><option value="new" ${st.sort==="new"?"selected":""}>Newest</option><option value="hi" ${st.sort==="hi"?"selected":""}>Highest pay</option></select>
+<button class="btn" id="near">Near me (Kampala)</button><button class="btn" id="alert">Alert me for this search</button></div>
+<div class="tabs"><button class="tab" data-tab="all" aria-pressed="${st.tab==="all"}"><b>All jobs</b><small>${cnt.all} listings</small></button><button class="tab" data-tab="no" aria-pressed="${st.tab==="no"}"><b>No certificate needed</b><small>${cnt.no} listings · ${op(J.filter(j=>!j.cert))} openings</small></button><button class="tab" data-tab="cert" aria-pressed="${st.tab==="cert"}"><b>Certificate / degree required</b><small>${cnt.cert} listings · ${op(J.filter(j=>j.cert))} openings</small></button></div>
+<div id="res"></div>`}
+function res(){const r=list();$("#res").innerHTML=r.length?`<p class="co">${r.length} jobs found.</p><div class="grid">${r.map(card).join("")}</div>`:`<div class="sec">No jobs match. Clear a filter or widen the location.</div>`}
+function job(){const j=J.find(x=>x.id===st.jid);if(!j)return `<button class="back" data-v="jobs">← Back to jobs</button><div class="sec">This job is no longer available.</div>`;
+const done=applied(j.id);
+return `<button class="back" data-v="jobs">← Back to jobs</button><div style="max-width:720px;margin:auto"><div class="sec"><div class="tags"><span class="tag ${j.cert?'cert':'nc'}">${j.cert?"Certificate required":"No certificate"}</span>${j.ver?'<span class="tag">✓ Verified employer</span>':''}</div><h2 style="margin-top:8px">${j.t}</h2><div class="co">${j.co} · ${j.loc} · ${j.type} · posted ${j.age}d ago</div><p class="sal" style="font-size:20px">${sal(j)}</p><div class="stats"><div class="stat"><b>${j.open}</b><br>openings</div><div class="stat"><b>${U(j.fee)}</b><br>application fee</div></div>
+<h3>About the role</h3><p>${j.co} is hiring ${j.open} ${j.t.toLowerCase()}${j.open>1?"s":""} in ${j.loc}. You will work in ${j.cat.toLowerCase()} and report to a supervisor. Pay is shown per ${j.per}.</p><h3>What we need</h3><ul><li>${j.cert?"Qualification: "+j.edu:"No certificate needed"}</li><li>Honest, punctual and able to start soon</li><li>Contact number that is always reachable</li></ul>
+<div class="warn">Orbit charges ${U(j.fee)} to process your application. Never pay anyone outside Orbit.</div></div>
+<form class="sec" id="af"><h3>Apply for this job</h3>${done?"<p>You have already applied. Check My applications.</p>":j.open<1?"<p>No openings left for this job. Please check other jobs.</p>":`<label>Full name</label><input id="an" value="${st.user||""}"><label>Phone</label><input id="ap" inputmode="tel" placeholder="07XX XXX XXX"><label>CV (PDF/Word) *</label><input type="file" id="cvf" accept=".pdf,.doc,.docx">${j.cert?'<label>Certificate / diploma / degree *</label><input type="file" id="ctf" accept=".pdf,.jpg,.jpeg,.png">':''}<label>Application letter * (at least 30 characters)</label><textarea id="al" rows="5"></textarea><p class="hint" id="miss"></p><button class="btn p" id="goPay" style="width:100%" disabled>Apply and go to payment</button>`}</form></div>`}
+function chk(){const g=id=>$(id),m=[];if(!g("#an"))return;if(g("#an").value.trim().length<2)m.push("name");if(g("#ap").value.replace(/\D/g,"").length<9)m.push("phone");if(!g("#cvf").files.length)m.push("CV");if(g("#ctf")&&!g("#ctf").files.length)m.push("certificate");if(g("#al").value.trim().length<30)m.push("application letter");$("#goPay").disabled=m.length>0;$("#miss").textContent=m.length?"Still needed: "+m.join(", "):"All documents added."}
+let AP=null;
+function pay(){const j=J.find(x=>x.id===AP.job);return `<button class="back" data-job="${j.id}">← Back to job</button><div class="sec" style="max-width:520px;margin:auto"><h2>Payment</h2><p class="co">${j.t} · ${j.co}</p><div class="stat"><b>${U(j.fee)}</b><br>application fee</div>
+<label>Choose how to pay</label><div class="pm">${[["mtn","MTN Mobile Money"],["airtel","Airtel Money"],["card","Visa / Mastercard"],["merch","Airtel Merchant Code"]].map(([v,l])=>`<label><input type="radio" name="pm" value="${v}">${l}</label>`).join("")}</div><div id="pf" style="margin-top:8px"></div><button class="btn p" id="paynow" style="width:100%;margin-top:12px" disabled>Pay ${U(j.fee)}</button><p class="hint">Demo mode: no real money moves until a payment gateway (such as Flutterwave or Pesapal) is connected. Card details are never saved.</p></div>`}
+function pform(m){const x={mtn:'<label>MTN number</label><input id="pn" inputmode="tel" placeholder="077X XXX XXX"><p class="hint">You will get a prompt on your phone to approve.</p>',airtel:'<label>Airtel number</label><input id="pn" inputmode="tel" placeholder="070X XXX XXX"><p class="hint">You will get a prompt on your phone to approve.</p>',card:'<label>Name on card</label><input id="cn"><label>Card number</label><input id="cc" inputmode="numeric" placeholder="1234 5678 9012 3456"><div style="display:flex;gap:8px"><div><label>Expiry</label><input id="ce" placeholder="MM/YY"></div><div><label>CVV</label><input id="cv2" inputmode="numeric" maxlength="4"></div></div>',merch:`<div class="warn">Dial *185*9# or open Airtel Money, choose Pay Merchant and enter code <b>${(DB.cfg.merchant||CFG.merchant)}</b>. Pay exactly ${U(J.find(j=>j.id===AP.job).fee)}.</div><label>Transaction ID from the Airtel message</label><input id="tid">`}[m];$("#pf").innerHTML=x;AP.m=m;pchk()}
+function pchk(){const g=i=>($(i)||{value:""}).value.trim();let ok=false;if(AP.m==="mtn"||AP.m==="airtel")ok=g("#pn").replace(/\D/g,"").length>=10;else if(AP.m==="card")ok=g("#cn").length>1&&g("#cc").replace(/\D/g,"").length>=13&&/^\d\d\/\d\d$/.test(g("#ce"))&&g("#cv2").length>=3;else if(AP.m==="merch")ok=g("#tid").length>=6;$("#paynow").disabled=!ok}
+async function finish(){const j=J.find(x=>x.id===AP.job),b=$("#paynow");b.disabled=true;b.textContent="Processing payment…";await new Promise(r=>setTimeout(r,1500));
+const id=Date.now()+"-"+uid,rec={job:j.id,title:j.t,co:j.co,name:AP.name,status:"Submitted",fee:j.fee,method:AP.m,uid,ts:Date.now()};
+if(db){await put("applications",id,rec);await put("contacts",id,{phone:AP.phone,cv:AP.cv,cert:AP.ct||"",letter:AP.letter})}else{st.apps.push(rec);DB.apps[id]=rec;save()}
+await put("jobs",j.id,Object.assign({},DB.jobs[j.id]||{},{open:Math.max(0,(+j.open||0)-1)}));st.view="apps";render();toast("Payment received. Application submitted.")}
+function apps(){const a=myApps();return `<h2>My applications</h2>`+(a.length?a.map(x=>`<div class="sec"><b>${x.title}</b> · ${x.co}<br><span class="co">Fee ${U(x.fee)} paid via ${({mtn:"MTN MoMo",airtel:"Airtel Money",card:"Visa/Mastercard",merch:"Airtel Merchant"})[x.method]}</span><div class="tags" style="margin-top:6px">${["Submitted","In review","Shortlisted","Interview"].map(s=>`<span class="tag" style="${s===x.status?"background:var(--pr);color:var(--pt)":""}">${s}</span>`).join("")}${x.status==="Rejected"?'<span class="tag">Rejected</span>':""}</div></div>`).join(""):`<div class="sec">No applications yet. Open a job and apply.</div>`)}
+function saved(){return `<h2>Saved jobs & alerts</h2><div class="grid">${st.saved.map(i=>J.find(j=>j.id===i)).filter(Boolean).map(card).join("")||'<div class="sec">Nothing saved yet.</div>'}</div><h3 style="margin:16px 0 8px">Job alerts</h3>${st.alerts.map(a=>`<div class="sec">${a}</div>`).join("")||'<div class="sec">No alerts. Use “Alert me for this search” on the jobs page.</div>'}`}
+function employers(){return `<h2>For employers</h2><div class="two"><div class="sec"><h3>Post a job</h3><form id="pf2"><label>Company name</label><input required id="pco"><label>Job title</label><input required id="pt"><label>Location</label><select id="pl">${LOC.map(l=>`<option>${l}</option>`).join("")}</select><label>Pay range (UGX)</label><div style="display:flex;gap:6px"><input type="number" required placeholder="Min" id="p1"><input type="number" required placeholder="Max" id="p2"></div><label>Pay period</label><select id="pp"><option>month</option><option>day</option></select><label>Number of openings</label><input type="number" min="1" value="1" required id="po"><label>Certificate required?</label><select id="pc"><option>No</option><option>Yes</option></select><div class="warn">Applicants pay ${U(CFG.no)} (no certificate) or ${U(CFG.cert)} (certificate) to apply. Orbit sets this fee.</div><button class="btn p">Publish job</button></form></div>
+<div class="sec"><h3>Tools included</h3><ul><li>Job counts on the site update the moment you publish</li><li>Applicant dashboard in Admin: update each status</li><li>Messaging, team accounts and analytics (live version)</li></ul></div></div>`}
+function salary(){const rows=J.slice().sort((a,b)=>mx(b)-mx(a)).slice(0,12),m=Math.max(...rows.map(mx));
+return `<h2>Salary insights</h2><p class="co">Top monthly pay ceilings (daily wages × 26 days).</p><div class="sec bars">${rows.map(j=>`<div><span>${j.t.split(" /")[0]}</span><i style="width:${Math.max(4,mx(j)/m*100)}%"></i><span>${f(mx(j))}</span></div>`).join("")}</div><div class="sec"><h3>Compare your pay</h3><select id="cs">${J.map(j=>`<option value="${j.id}">${j.t}</option>`).join("")}</select> <input id="cv" type="number" placeholder="Your monthly pay (UGX)" style="margin-top:8px"><p id="cr" class="co"></p></div>`}
+function learn(){return `<h2>Career help</h2><div class="two"><div class="sec"><h3>CV builder</h3><p>Build a simple CV or upload your own. Choose who can see it: public, recruiters only, or hidden.</p><button class="btn" data-m="cv">Open CV builder</button></div><div class="sec"><h3>Skills tests</h3><p>Short tests for customer service, Excel and basic safety.</p><button class="btn" data-m="skill">Take a test</button></div><div class="sec"><h3>Interview tips</h3><p>Arrive early, bring copies of your ID and certificates, and ask about pay and start date.</p></div><div class="sec"><h3>Referral rewards</h3><p>Invite a friend. When they get hired through Orbit you both earn UGX 10,000 airtime.</p></div><div class="sec"><h3>Stay safe</h3><p>Only pay the application fee inside Orbit. Report suspicious listings.</p></div></div>`}
+function admin(){if(!isAdmin)return '<div class="sec">Admin is for site owners only.</div>';const A=Object.values(DB.apps),rev=A.reduce((t,a)=>t+(+a.fee||0),0);const c=Object.assign({},CFG,DB.cfg);
+return `<h2>Admin backend</h2><div class="stats"><div class="stat"><b>${J.length}</b><br>jobs</div><div class="stat"><b>${J.reduce((t,j)=>t+(+j.open||0),0)}</b><br>openings</div><div class="stat"><b>${A.length}</b><br>applications</div><div class="stat"><b>${U(rev)}</b><br>fees collected</div></div>
+<div class="sec"><h3>Fees & payments</h3><form id="cf" style="display:flex;gap:8px;flex-wrap:wrap;align-items:end"><div><label>No-certificate fee</label><input id="c1" type="number" value="${c.no}"></div><div><label>Certified fee</label><input id="c2" type="number" value="${c.cert}"></div><div><label>Airtel merchant code</label><input id="c3" value="${c.merchant}"></div><button class="btn p">Save</button></form></div>
+<div class="sec"><h3>Jobs <button class="btn" data-edit="new" style="margin-left:8px">+ Add job</button></h3><div class="tw"><table><tr><th>Title</th><th>Company</th><th>Location</th><th>Pay</th><th>Openings</th><th>Fee</th><th></th></tr>${J.map(j=>`<tr><td>${j.t}</td><td>${j.co}</td><td>${j.loc}</td><td>${sal(j)}</td><td>${j.open}</td><td>${U(j.fee)}</td><td><button class="btn" data-edit="${j.id}">Edit</button></td></tr>`).join("")}</table></div></div>
+<div class="sec"><h3>Applications</h3><div class="tw"><table><tr><th>Applicant</th><th>Job</th><th>Fee</th><th>Method</th><th>Status</th></tr>${Object.entries(DB.apps).map(([k,a])=>`<tr><td>${a.name}</td><td>${a.title}</td><td>${U(a.fee)}</td><td>${a.method}</td><td><select data-st="${k}">${["Submitted","In review","Shortlisted","Interview","Rejected"].map(s=>`<option ${s===a.status?"selected":""}>${s}</option>`).join("")}</select></td></tr>`).join("")||"<tr><td>No applications yet</td></tr>"}</table></div></div>`}
+function editJob(id){const j=id==="new"?{t:"",co:"",loc:"Kampala",min:0,max:0,open:1,cert:false,per:"month",type:"Full-time",cat:"Management",edu:"None"}:J.find(x=>x.id===id);
+modal(`<h2>${id==="new"?"Add job":"Edit job"}</h2><form id="ej" data-id="${id}"><label>Title</label><input id="e1" value="${j.t}" required><label>Company</label><input id="e2" value="${j.co}" required><label>Location</label><select id="e3">${LOC.map(l=>`<option ${l===j.loc?"selected":""}>${l}</option>`).join("")}</select><div style="display:flex;gap:6px"><div><label>Min pay</label><input id="e4" type="number" value="${j.min}"></div><div><label>Max pay</label><input id="e5" type="number" value="${j.max}"></div></div><label>Openings</label><input id="e6" type="number" min="0" value="${j.open}"><label>Fee override (blank = default)</label><input id="e7" type="number" value="${j.feeOverride??""}"><label>Certificate required</label><select id="e8"><option ${j.cert?"":"selected"} value="0">No</option><option ${j.cert?"selected":""} value="1">Yes</option></select><div style="display:flex;gap:8px;margin-top:12px"><button class="btn p" style="flex:1">Save</button>${id==="new"?"":'<button type="button" class="btn" data-del="'+id+'">Delete</button>'}</div></form>`)}
+function render(){nav();$("#main").innerHTML=({jobs,job,pay,apps,saved,employers,salary,learn,admin})[st.view]();if(st.view==="jobs")res();if(st.view==="job")chk()}
+const dlg=$("#dlg");
+function modal(h){dlg.innerHTML=h+'<div style="margin-top:12px;text-align:right"><button class="btn" onclick="dlg.close()">Close</button></div>';dlg.showModal()}
+function signup(){const html=(`<h2>${st.user?"Your account":"Create your account to start"}</h2><form id="sg"><label>I am a</label><select id="role"><option>Job seeker</option><option>Employer</option></select><label>Full name</label><input required id="sn"><label>Email or phone</label><input required id="se"><label>Password</label><input type="password" required minlength="6"><div class="warn">Protected by CAPTCHA. You can request your data at any time.</div><button class="btn p" style="width:100%">Create account</button><button type="button" class="btn" style="width:100%;margin-top:8px" data-soc>Continue with Google</button><button type="button" class="btn" style="width:100%;margin-top:8px" data-soc>Continue with LinkedIn</button></form>`);if(st.user)modal(html);else{dlg.innerHTML=html;dlg.showModal()}}
+dlg.addEventListener("cancel",e=>{if(!st.user)e.preventDefault()});
+document.addEventListener("click",e=>{const t=e.target.closest("button,a");if(!t)return;const d=t.dataset;
+if(t.classList.contains("logo")){e.preventDefault();st.view="jobs";$("#nav").hidden=true;render();scrollTo(0,0)}
+else if(t.id==="menuBtn"){const m=$("#nav");m.hidden=!m.hidden;t.setAttribute("aria-expanded",!m.hidden)}
+else if(d.v){st.view=d.v;$("#nav").hidden=true;render();scrollTo(0,0)}
+else if(d.job){$("#nav").hidden=true;st.view="job";st.jid=d.job;render();scrollTo(0,0)}
+else if(d.tab){st.tab=d.tab;render()}
+else if(d.save){const i=d.save;st.saved=st.saved.includes(i)?st.saved.filter(x=>x!==i):[...st.saved,i];save();render()}
+else if(t.id==="goPay"){e.preventDefault();AP={job:st.jid,name:$("#an").value.trim(),phone:$("#ap").value.trim(),cv:$("#cvf").files[0].name,ct:$("#ctf")?$("#ctf").files[0].name:"",letter:$("#al").value.trim()};st.view="pay";render();scrollTo(0,0)}
+else if(t.id==="paynow"){finish()}
+else if(d.edit)editJob(d.edit);
+else if(d.del){put("jobs",d.del,{deleted:true});dlg.close();toast("Job deleted")}
+else if(d.soc){toast("Social sign-in connects in the live version")}
+else if(d.m){modal(d.m==="cv"?`<h2>CV builder</h2><label>Name</label><input><label>Skills</label><input><label>Experience</label><textarea rows="3"></textarea><label>Visibility</label><select><option>Public</option><option>Recruiters only</option><option>Hidden</option></select>`:`<h2>Skills test</h2><p>A customer says the price is too high. What do you do first?</p><select><option>Listen and explain the value</option><option>Ignore them</option></select>`)}
+else if(t.id==="signup")signup();
+else if(t.id==="theme"){const r=document.documentElement;const dk=getComputedStyle(r).getPropertyValue("color-scheme").includes("dark");r.dataset.theme=dk?"light":"dark";t.textContent=dk?"Dark":"Light"}
+else if(t.id==="near"){st.loc="Kampala";render()}
+else if(t.id==="alert"){e.preventDefault();st.alerts.push(`“${st.q||"All jobs"}” ${st.loc||"anywhere"}, ${st.cat||"any industry"}: email and push`);save();toast("Alert saved")}
+else if(t.id==="bot")modal(`<h2>Orbit help</h2><select onchange="this.nextElementSibling.textContent=this.value"><option value="">Choose a question…</option><option>Open a job, add your CV, letter (and certificate if needed), then pay the fee.</option><option>Pay with MTN, Airtel, Visa/Mastercard or Airtel merchant code.</option><option>See your status under My applications.</option></select><p class="co"></p>`);
+else if(t.id==="rep")modal(`<h2>Report a scam</h2><textarea rows="3" placeholder="Which job and what happened?"></textarea><button class="btn p" onclick="dlg.close();toast('Report sent')" style="margin-top:8px">Send report</button>`);
+else if(t.id==="cookieok")$("#ck").remove()});
+document.addEventListener("submit",async e=>{const i=e.target.id;
+if(i==="sf"){e.preventDefault();st.q=$("#q").value;res()}
+if(i==="af")e.preventDefault();
+if(i==="sg"){e.preventDefault();st.user=$("#sn").value;save();dlg.close();toast("Welcome to Orbit, "+st.user);$("#signup").textContent=st.user.split(" ")[0]}
+if(i==="pf2"){e.preventDefault();const c=$("#pc").value==="Yes";if(await put("jobs","n"+Date.now(),{t:$("#pt").value,co:$("#pco").value,loc:$("#pl").value,min:+$("#p1").value,max:+$("#p2").value,per:$("#pp").value,open:+$("#po").value,cert:c,edu:c?"Certificate":"None",type:"Full-time",cat:"Management",ts:Date.now()})){toast("Job published. Site counts updated.");st.view="jobs";st.tab="all";render()}}
+if(i==="cf"){e.preventDefault();if(await put("settings","main",{no:+$("#c1").value,cert:+$("#c2").value,merchant:$("#c3").value})){Object.assign(CFG,DB.cfg);toast("Saved")}}
+if(i==="ej"){e.preventDefault();const id=e.target.dataset.id,fe=$("#e7").value,d={t:$("#e1").value,co:$("#e2").value,loc:$("#e3").value,min:+$("#e4").value,max:+$("#e5").value,open:+$("#e6").value,cert:$("#e8").value==="1",feeOverride:fe===""?null:+fe};
+dlg.close();if(id==="new")await put("jobs","n"+Date.now(),Object.assign({per:"month",type:"Full-time",cat:"Management",edu:d.cert?"Certificate":"None",ts:Date.now()},d));else await put("jobs",id,d);toast("Saved")}});
+document.addEventListener("change",async e=>{const i=e.target.id,t=e.target;if(["loc","cat","type","sort","min"].includes(i)){st[i]=i==="min"?+t.value:t.value;res()}
+if(i==="cur"){st.cur=t.value;render()}
+if(t.name==="pm")pform(t.value);
+if(t.dataset.st){await put("applications",t.dataset.st,{status:t.value},true);toast("Status updated")}
+if(i==="cs"||i==="cv"){const j=J.find(x=>x.id===$("#cs").value),v=+$("#cv").value;if(v)$("#cr").textContent=`Typical range for ${j.t}: ${f(mo(j))}–${f(mx(j))} per month. You earn ${v<mo(j)?"below":v>mx(j)?"above":"within"} that range.`}
+chk()});
+document.addEventListener("input",e=>{const i=e.target.id;if(i==="q"){st.q=e.target.value;res()}if(["an","ap","al"].includes(i))chk();if(["pn","cn","cc","ce","cv2","tid"].includes(i))pchk()});
+if(st.user)$("#signup").textContent=st.user.split(" ")[0];
+document.body.insertAdjacentHTML("beforeend",'<div class="cookie" id="ck"><span>We use cookies to keep you signed in and improve results.</span><button class="btn p" id="cookieok">Accept</button></div>');
+merge();render();if(!st.user)signup();
+</script></body></html>
